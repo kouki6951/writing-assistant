@@ -18,7 +18,7 @@ steps:
       '--region', 'asia-northeast1',
       '--platform', 'managed',
       '--allow-unauthenticated',
-      '--update-secrets', 'SLACK_BOT_TOKEN=slack-api-token:latest,SLACK_BOT_URL=slack-api-url:latest,DIFY_API_KEY=dify-api-key:latest,DIFY_API_URL=dify-api-url:latest'
+      '--update-secrets', 'SLACK_BOT_TOKEN=slack-api-token:latest,SLACK_BOT_URL=slack-bot-url:latest,DIFY_API_KEY=dify-api-key:latest,DIFY_API_URL=dify-api-url:latest'
     ]
 
 images:
