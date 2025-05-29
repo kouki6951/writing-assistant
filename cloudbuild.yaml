@@ -2,26 +2,26 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     args: [
       'build', '-t',
-      'asia-northeast1-docker.pkg.dev/$PROJECT_ID/docker-repo/my-app', '.'
+      'asia-northeast1-docker.pkg.dev/$PROJECT_ID/wrigint-assistant/my-app', '.'
     ]
 
   - name: 'gcr.io/cloud-builders/docker'
     args: [
-      'push', 'asia-northeast1-docker.pkg.dev/$PROJECT_ID/docker-repo/my-app'
+      'push', 'asia-northeast1-docker.pkg.dev/$PROJECT_ID/wrigint-assistant/my-app'
     ]
 
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: 'gcloud'
     args: [
       'run', 'deploy', 'my-app',
-      '--image', 'asia-northeast1-docker.pkg.dev/$PROJECT_ID/docker-repo/my-app',
+      '--image', 'asia-northeast1-docker.pkg.dev/$PROJECT_ID/wrigint-assistant/my-app',
       '--region', 'asia-northeast1',
       '--platform', 'managed',
       '--allow-unauthenticated'
     ]
 
 images:
-  - 'asia-northeast1-docker.pkg.dev/$PROJECT_ID/docker-repo/my-app'
+  - 'asia-northeast1-docker.pkg.dev/$PROJECT_ID/wrigint-assistant/my-app'
 
 options:
   # Cloud Buildのビルドログ保存方法を明示する
