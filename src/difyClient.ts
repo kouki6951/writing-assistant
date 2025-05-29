@@ -5,8 +5,6 @@ const DIFY_API_URL = process.env.DIFY_API_URL;
 
 export async function sendToDify(userInput: string, user: string) {
 
-    console.log(DIFY_API_KEY)
-    console.log(DIFY_API_KEY)
 
     if (!DIFY_API_KEY || !DIFY_API_URL) {
         console.error('Dify送信エラー: トークンまたはURLが未設定です。');

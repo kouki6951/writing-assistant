@@ -34,6 +34,7 @@ app.post('/writing-assistant', async (req, res) => {
 
     } catch (error) {
       await sendToSlack(channel, "記事生成に失敗しました。");
+      console.log(error)
     }
   }
 });
