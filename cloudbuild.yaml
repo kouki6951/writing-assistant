@@ -22,3 +22,10 @@ steps:
 
 images:
   - 'asia-northeast1-docker.pkg.dev/$PROJECT_ID/docker-repo/my-app'
+
+options:
+  # Cloud Buildのビルドログ保存方法を明示する
+  # デフォルトではGoogle が作成したデフォルト バケットへビルドログが保存される
+  # とくに分析用途などでは使用していないため、CLOUD_LOGGING_ONLYに変更する
+  # https://cloud.google.com/build/docs/securing-builds/store-manage-build-logs?hl=ja
+  logging: CLOUD_LOGGING_ONLY
