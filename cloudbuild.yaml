@@ -17,7 +17,8 @@ steps:
       '--image', 'asia-northeast1-docker.pkg.dev/$PROJECT_ID/writing-assistant/my-app',
       '--region', 'asia-northeast1',
       '--platform', 'managed',
-      '--allow-unauthenticated'
+      '--allow-unauthenticated',
+      '--set-env-vars', 'SLACK_BOT_TOKEN=slack-api-token:latest,SLACK_BOT_URL=slack-api-url:latest,DIFY_API_KEY=dify-api-key:latest,DIFY_API_URL=dify-api-url:latest'
     ]
 
 images:
