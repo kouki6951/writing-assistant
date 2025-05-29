@@ -27,7 +27,7 @@ app.post('/writing-assistant', async (req, res) => {
     const user = body.event.user || 'anonymous';
 
     try {
-      await sendToSlack(channel, "記事生成中です。何も入力せずしばらくお待ちください!!!!!。");
+      await sendToSlack(channel, "記事生成中です。何も入力せずしばらくお待ちください。");
       const difyResponse = await sendToDify(messageText, user);
       const returnText = difyResponse.answer;
       await sendToSlack(channel, returnText);
