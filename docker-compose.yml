@@ -4,5 +4,9 @@ services:
     build: .
     ports:
       - "3000:3000"
+    tty: true
+    stdin_open: true
     env_file:
       - .env
+    environment:
+      - NODE_ENV=development

@@ -1,15 +1,18 @@
 steps:
+  # Dockerコンテナのビルド
   - name: 'gcr.io/cloud-builders/docker'
     args: [
       'build', '-t',
       'asia-northeast1-docker.pkg.dev/$PROJECT_ID/writing-assistant/my-app', '.'
     ]
 
+  # Dockerコンテナのpush
   - name: 'gcr.io/cloud-builders/docker'
     args: [
       'push', 'asia-northeast1-docker.pkg.dev/$PROJECT_ID/writing-assistant/my-app'
     ]
 
+  # Cloud Runにデプロイ
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: 'gcloud'
     args: [
@@ -18,15 +21,11 @@ steps:
       '--region', 'asia-northeast1',
       '--platform', 'managed',
       '--allow-unauthenticated',
-      '--update-secrets', 'SLACK_BOT_TOKEN=slack-api-token:latest,SLACK_BOT_URL=slack-bot-url:latest,DIFY_API_KEY=dify-api-key:latest,DIFY_API_URL=dify-api-url:latest'
+      '--update-secrets', 'SLACK_BOT_TOKEN=slack-api-token:latest,SLACK_BOT_URL=slack-bot-url:latest,DIFY_API_URL=dify-api-url:latest,BASIC_DIFY_API_KEY=basic-dify-api-key:latest,GENERATE_OUTLINE_DIFY_API_KEY=generate-outline-dify-api-key:latest,GENERATE_ARTICLE_DIFY_API_KEY=generate-article-dify-api-key:latest'
     ]
 
 images:
   - 'asia-northeast1-docker.pkg.dev/$PROJECT_ID/writing-assistant/my-app'
 
 options:
-  # Cloud Buildのビルドログ保存方法を明示する
-  # デフォルトではGoogle が作成したデフォルト バケットへビルドログが保存される
-  # とくに分析用途などでは使用していないため、CLOUD_LOGGING_ONLYに変更する
-  # https://cloud.google.com/build/docs/securing-builds/store-manage-build-logs?hl=ja
   logging: CLOUD_LOGGING_ONLY
