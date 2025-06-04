@@ -21,8 +21,6 @@ app.post('/generate_outline', async (req, res) => {
     body = JSON.parse(body.payload);
   }
 
-  console.log(body);
-
   // アウトライン作成ツールのモーダル表示
   if (body.command === "/generate_outline") {
 
